@@ -104,6 +104,8 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                return R.xml.blaze_top_level_settings;
            case 1:
                return R.xml.top_level_settings;
+		   case 2:
+               return R.xml.classic_top_level_settings;
            default:
                return R.xml.blaze_top_level_settings;
         }
@@ -256,7 +258,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                 pref.getLayoutResource() != R.layout.blaze_dashboard_preference_phone && 
                 pref.getLayoutResource() != R.layout.blaze_dashboard_preference_bottom) {
                 pref.setLayoutResource(R.layout.blaze_dashboard_preference_middle);
-            } else if (mDashBoardStyle == 1) {
+            }  else if (mDashBoardStyle == 1) {
 	    if (key.equals("top_level_network")
             	|| key.equals("top_level_blaze")
                 || key.equals("top_level_sound")
@@ -287,7 +289,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
         int tintColor = Utils.getHomepageIconColor(getContext());
         iteratePreferences(preference -> {
             Drawable icon = preference.getIcon();
-            if (icon != null) {
+            if (icon != null && mDashBoardStyle != 2) {
                 icon.setTint(tintColor);
             }
         });
